@@ -111,7 +111,7 @@
       :tuntun [[2 3] [2 3] [4 5]]
       :tuntun [[4 5] [2 3] [4 5]])))
 
-(deftest ^:kaocha/pending repeat-and-truncate-test
+(deftest ^:implemented repeat-and-truncate-test
   (testing "Returns the coll when no repeat/truncate present"
     (is (= [0 1 2 3] (c/repeat-and-truncate (range 4) false false 4))))
   (testing "Only truncate option"
@@ -140,7 +140,7 @@
       [0 1 2 3 0 1 2 3] 8
       [0 1 2 3 0 1 2 3] 9)))
 
-(deftest ^:kaocha/pending order-in-words-test
+(deftest ^:implemented order-in-words-test
   (testing "order in words"
     (are [x y] (= x (apply c/order-in-words y))
       [:x-greater-than-y] [4 2 3]
