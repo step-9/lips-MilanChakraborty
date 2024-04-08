@@ -16,7 +16,7 @@
   (testing "zero denominator yields :infinite"
     (is (= :infinite (c/informative-divide 3 0)))))
 
-(deftest ^:kaocha/pending harishchandra-test
+(deftest ^:implemented harishchandra-test
   (testing "falsy values"
     (is (nil? (c/harishchandra false)))
     (is (nil? (c/harishchandra nil))))
@@ -27,10 +27,10 @@
     (is (zero? (c/harishchandra 0)))
     (is (true? (c/harishchandra true)))))
 
-(deftest ^:kaocha/pending yudhishtira-test
+(deftest ^:implemented yudhishtira-test
   (testing "falsy values"
-    (is (false? (c/yudishtira false)))
-    (is (false? (c/yudishtira nil))))
+    (is (= :ashwathama (c/yudishtira false)))
+    (is (= :ashwathama (c/yudishtira nil))))
   (testing "truthy values"
     (is (= 2 (c/yudishtira 2)))
     (is (= "" (c/yudishtira "")))
