@@ -34,7 +34,7 @@
   (testing "non-seqable collection"
     (is (nil? (reverse' 1)))))
 
-(deftest ^:kaocha/pending every-test
+(deftest ^:implemented every-test
   (testing "true condition"
     (is (true? (every?' even? [2 4 6 8]))))
   (testing "false condition"
