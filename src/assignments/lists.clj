@@ -9,10 +9,10 @@
    :use          '[loop recur]
    :dont-use     '[map]}
   [f coll]
-  (loop [result [] remaining coll]
-    (if (empty? remaining) 
+  (loop [result [] [first-element & remaining-elements] coll]
+    (if (nil? first-element) 
       result
-      (recur (conj result (f (first remaining))) (rest remaining)))))
+      (recur (conj result (f first-element)) remaining-elements))))
 
 (defn filter'
   "Implement a non-lazy version of filter that accepts a
@@ -22,12 +22,12 @@
    :use          '[loop recur]
    :dont-use     '[filter]}
   [pred coll] 
-  (loop [result [] remaining coll]
-    (if (empty? remaining)
+  (loop [result [] [first-element & remaining-elements] coll]
+    (if (nil? first-element)
       result
-      (if (pred (first remaining))
-        (recur (conj result (first remaining)) (rest remaining))
-        (recur result (rest remaining))))))
+      (if (pred first-element)
+           (recur (conj result first-element) remaining-elements)
+           (recur result remaining-elements)))))
 
 (defn reduce'
   "Implement your own multi-arity version of reduce
