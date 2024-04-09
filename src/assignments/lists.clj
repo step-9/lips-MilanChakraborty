@@ -5,9 +5,14 @@
   mapper function and several collections. The output
   should be consistent with clojure.core/map"
   {:level        :medium
+   :todo "Upgrade the function to take multiple collections as arguement"
    :use          '[loop recur]
    :dont-use     '[map]}
-  [f & colls])
+  [f coll]
+  (loop [result [] remaining coll]
+    (if (empty? remaining) 
+      result
+      (recur (conj result (f (first remaining))) (rest remaining)))))
 
 (defn filter'
   "Implement a non-lazy version of filter that accepts a
@@ -16,7 +21,13 @@
   {:level        :easy
    :use          '[loop recur]
    :dont-use     '[filter]}
-  [pred coll])
+  [pred coll] 
+  (loop [result [] remaining coll]
+    (if (empty? remaining)
+      result
+      (if (pred (first remaining))
+        (recur (conj result (first remaining)) (rest remaining))
+        (recur result (rest remaining))))))
 
 (defn reduce'
   "Implement your own multi-arity version of reduce

@@ -2,11 +2,11 @@
   (:require [clojure.test :refer :all]
             [assignments.lists :refer :all :as l]))
 
-(deftest ^:kaocha/pending map-test
+(deftest ^:implemented map-test
   (testing "identity with single coll"
     (is (= [1 2 3] (map' identity [1 2 3])))))
 
-(deftest ^:kaocha/pending filter-test
+(deftest ^:implemented filter-test
   (testing "even? predicate"
     (is (= [2 4 6] (filter' even? [1 2 3 4 5 6 9])))))
 
