@@ -16,7 +16,7 @@
   (testing "arity 3"
     (is (= 15 (reduce' + 1 [2 3 4 5])))))
 
-(deftest ^:kaocha/pending count-test
+(deftest ^:implemented count-test
   (testing "sequence length"
     (is (= 5 (count' [1 2 3 4 5]))))
   (testing "nil"

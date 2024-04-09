@@ -9,7 +9,8 @@
    :use          '[loop recur]
    :dont-use     '[map]}
   [f coll]
-  (loop [result [] [first-element & remaining-elements] coll]
+  (loop [result [] 
+         [first-element & remaining-elements] coll]
     (if (nil? first-element) 
       result
       (recur (conj result (f first-element)) remaining-elements))))
@@ -22,7 +23,8 @@
    :use          '[loop recur]
    :dont-use     '[filter]}
   [pred coll] 
-  (loop [result [] [first-element & remaining-elements] coll]
+  (loop [result []
+         [first-element & remaining-elements] coll]
     (if (nil? first-element)
       result
       (if (pred first-element)
@@ -45,7 +47,12 @@
   {:level        :easy
    :use          '[loop recur]
    :dont-use     '[count]}
-  [coll])
+  [coll]
+  (loop [cnt 0
+         remaining coll]
+    (if (empty? remaining)
+      cnt
+      (recur (inc cnt) (rest remaining)))))
 
 (defn reverse'
   "Implement your own version of reverse that reverses a coll.
