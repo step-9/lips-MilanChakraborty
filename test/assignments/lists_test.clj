@@ -28,7 +28,7 @@
   (testing "string"
     (is (= 6 (count' "abcdef")))))
 
-(deftest ^:kaocha/pending reverse-test
+(deftest ^:implemented reverse-test
   (testing "seqable collection"
     (is (= [5 4 3 2 1] (reverse' [1 2 3 4 5]))))
   (testing "non-seqable collection"
