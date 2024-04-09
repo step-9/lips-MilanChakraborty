@@ -98,7 +98,10 @@
   {:level        :easy
    :use          '[partition every? partial apply <=]
    :dont-use     '[loop recur]}
-  [coll])
+  [coll]
+  ((comp
+   (partial every? (partial apply <=))
+   (partial partition 2 1)) coll))
 
 (defn distinct'
   "Implement your own lazy sequence version of distinct which returns
