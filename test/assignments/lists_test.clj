@@ -40,7 +40,7 @@
   (testing "false condition"
     (is (false? (every?' even? [2 4 9 6 8])))))
 
-(deftest ^:kaocha/pending some-test
+(deftest ^:implemented some-test
   (testing "true condition"
     (is (true? (some?' even? [1 5 3 4]))))
   (testing "false condition"
