@@ -72,11 +72,11 @@
    :use          '[loop recur and]
    :dont-use     '[every?]}
   [pred coll]
-  (loop [ctx true
-         remaining coll]
-    (if (or (not ctx) (empty? remaining))
-      ctx
-      (recur (pred (first remaining)) (rest remaining)))))
+  (loop [remaining coll]
+    (cond 
+      (empty? remaining) true
+      (not (pred (first remaining))) false
+      :else (recur (rest remaining)))))
 
 (defn some?'
   "Implement your own version of some that checks if at least one
