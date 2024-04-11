@@ -103,6 +103,15 @@
    (partial every? (partial apply <=))
    (partial partition 2 1)) coll))
 
+(defn distinct-lazy 
+  [coll seen]
+  (if (empty? coll)
+    nil
+    (let [[fst & remaining] coll]
+      (if (seen fst)
+        (distinct-lazy remaining seen)
+        (lazy-seq (cons fst (distinct-lazy remaining (conj seen fst))))))))
+
 (defn distinct'
   "Implement your own lazy sequence version of distinct which returns
   a collection with duplicates eliminated. Might have to implement another
@@ -110,7 +119,8 @@
   {:level        :medium
    :use          '[lazy-seq set conj let :optionally letfn]
    :dont-use     '[loop recur distinct]}
-  [coll])
+  [coll]
+  (distinct-lazy coll #{}))
 
 (defn dedupe'
   "Implement your own lazy sequence version of dedupe which returns

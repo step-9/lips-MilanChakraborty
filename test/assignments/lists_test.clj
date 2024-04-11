@@ -74,7 +74,7 @@
   (testing "two dimensional collection"
     (is (= [[1 2] [1 2] [3 4] [3 4]] (double-up [[1 2] [3 4]])))))
 
-(deftest ^:kaocha/pending distinct-test
+(deftest ^:implemented distinct-test
   (testing "non-empty collection"
     (is (= [1 2 4 5 3] (distinct' [1 2 1 2 4 5 3 5])))))
 
