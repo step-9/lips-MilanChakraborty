@@ -82,7 +82,7 @@
   (testing "non-empty collection"
     (is (= [1 2 1 4 5 3 5] (dedupe' [1 1 2 2 1 4 5 3 5])))))
 
-(deftest ^:kaocha/pending sum-of-adjacent-digits-test
+(deftest ^:implemented sum-of-adjacent-digits-test
   (testing "sum of adjacent digits of [1 2 3]"
     (is (= [3 5] (sum-of-adjacent-digits [1 2 3])))))
 

@@ -147,7 +147,8 @@
   {:level        :medium
    :use          '[map + rest]
    :dont-use     '[loop recur partition]}
-  [coll])
+  [coll]
+  (map (partial apply +) (map vector coll (rest coll))))
 
 (defn max-three-digit-sequence
   "Given a collection of numbers, find a three digit sequence that
