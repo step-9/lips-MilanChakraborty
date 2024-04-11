@@ -122,6 +122,15 @@
   [coll]
   (distinct-lazy coll #{}))
 
+(defn dedupe-lazy
+  [coll last-element]
+  (if (empty? coll)
+    nil
+    (let [[fst & remaining] coll]
+      (if (= last-element fst)
+        (dedupe-lazy remaining last-element)
+        (lazy-seq (cons fst (dedupe-lazy remaining fst)))))))
+
 (defn dedupe'
   "Implement your own lazy sequence version of dedupe which returns
   a collection with consecutive duplicates eliminated (like the uniq command).
@@ -129,7 +138,8 @@
   {:level        :medium
    :use          '[lazy-seq conj let :optionally letfn]
    :dont-use     '[loop recur dedupe]}
-  [coll])
+  [coll]
+  (dedupe-lazy coll nil))
 
 (defn sum-of-adjacent-digits
   "Given a collection, returns a map of the sum of adjacent digits.

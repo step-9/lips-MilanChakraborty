@@ -78,7 +78,7 @@
   (testing "non-empty collection"
     (is (= [1 2 4 5 3] (distinct' [1 2 1 2 4 5 3 5])))))
 
-(deftest ^:kaocha/pending dedupe'-test
+(deftest ^:implemented dedupe'-test
   (testing "non-empty collection"
     (is (= [1 2 1 4 5 3 5] (dedupe' [1 1 2 2 1 4 5 3 5])))))
 
