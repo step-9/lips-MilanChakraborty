@@ -99,9 +99,7 @@
    :use          '[partition every? partial apply <=]
    :dont-use     '[loop recur]}
   [coll]
-  ((comp
-   (partial every? (partial apply <=))
-   (partial partition 2 1)) coll))
+  (every? (partial apply <=) (partition 2 1 coll)))
 
 (defn distinct-lazy 
   [coll seen]
