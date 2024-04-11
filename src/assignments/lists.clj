@@ -107,7 +107,7 @@
     nil
     (let [[fst & remaining] coll]
       (if (seen fst)
-        (distinct-lazy remaining seen)
+        (recur remaining seen)
         (lazy-seq (cons fst (distinct-lazy remaining (conj seen fst))))))))
 
 (defn distinct'
@@ -126,7 +126,7 @@
     nil
     (let [[fst & remaining] coll]
       (if (= last-element fst)
-        (dedupe-lazy remaining last-element)
+        (recur remaining last-element)
         (lazy-seq (cons fst (dedupe-lazy remaining fst)))))))
 
 (defn dedupe'
