@@ -86,7 +86,7 @@
   (testing "sum of adjacent digits of [1 2 3]"
     (is (= [3 5] (sum-of-adjacent-digits [1 2 3])))))
 
-(deftest ^:kaocha/pending difference-test
+(deftest ^:implemented difference-test
   (testing "non-empty collection"
     (is (= [2 3] (difference [1 2 3] [1])))))
 
