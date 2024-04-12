@@ -90,7 +90,7 @@
   (testing "non-empty collection"
     (is (= [2 3] (difference [1 2 3] [1])))))
 
-(deftest ^:kaocha/pending union-test
+(deftest ^:implemented union-test
   (testing "non-empty collection"
     (is (= [1 2 3] (union [1 2] [2 3])))))
 
