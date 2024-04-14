@@ -94,6 +94,10 @@
   (testing "non-empty collection"
     (is (= [1 2 3] (union [1 2] [2 3])))))
 
+(deftest ^:implemented points-around-origin-test
+  (testing "should have 8 poinst"
+    (is (= [[-1 -1] [-1 0] [-1 1] [0 -1] [0 1] [1 -1] [1 0] [1 1]] points-around-origin))))
+
 (deftest ^:implemented transpose-test
   (testing "non-empty collection"
     (is (= [[:a :d] [:b :e] [:c :f]] (transpose [[:a :b :c] [:d :e :f]])))))
