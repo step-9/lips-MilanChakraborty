@@ -225,12 +225,20 @@
   [coll]
   (mapcat vector coll coll))
 
+(defn is-third-or-fifth? 
+  [index value]
+  (when (or 
+         (zero? (mod index 3)) 
+         (zero? (mod index 5))) 
+    value))
+
 (defn third-or-fifth
   "Given a collection return a new collection that contains
   elements whose index is either divisible by three or five"
   {:level        :easy
    :use          '[keep-indexed when :optionally map-indexed filter]}
-  [coll])
+  [coll]
+  (keep-indexed is-third-or-fifth? coll))
 
 (defn sqr-of-the-first
   "Given a collection, return a new collection that contains the

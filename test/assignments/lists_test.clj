@@ -106,7 +106,7 @@
   (testing "non-empty collection"
     (is (= [[1 4] [1 3] [1 5] [2 4] [2 3] [2 5] [3 4]] (cross-product [1 2 3] [4 3 5])))))
 
-(deftest ^:kaocha/pending third-or-fifth-test
+(deftest ^:implemented third-or-fifth-test
   (testing "non-empty collection"
     (is (= [1 4] (third-or-fifth [1 2 3 4])))))
 
