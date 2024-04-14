@@ -102,7 +102,7 @@
   (testing "non-empty collection"
     (is (= [[:a :d] [:b :e] [:c :f]] (transpose [[:a :b :c] [:d :e :f]])))))
 
-(deftest ^:kaocha/pending cross-product-test
+(deftest ^:implemented cross-product-test
   (testing "non-empty collection"
     (is (= [[1 4] [1 3] [1 5] [2 4] [2 3] [2 5] [3 4]] (cross-product [1 2 3] [4 3 5])))))
 
