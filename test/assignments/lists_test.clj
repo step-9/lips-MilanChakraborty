@@ -110,7 +110,7 @@
   (testing "non-empty collection"
     (is (= [1 4] (third-or-fifth [1 2 3 4])))))
 
-(deftest ^:kaocha/pending russian-dolls-test
+(deftest ^:implemented russian-dolls-test
   (testing "[1 2 3] 3 => [[[1]] [[2]] [[3]]]"
     (is (= [[[1]] [[2]] [[3]]]  (russian-dolls [1 2 3] 3)))))
 

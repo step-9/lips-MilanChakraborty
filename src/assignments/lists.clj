@@ -250,6 +250,10 @@
   [[fst & _ :as coll]]
   (map (constantly (* fst fst)) coll))
 
+(defn wrap 
+  [layers item]
+  (nth (iterate vector item) layers))
+
 (defn russian-dolls
   "Given a collection and a number, wrap each element in a nested vector
   with a nesting factor of the number provided.
@@ -257,7 +261,8 @@
   {:level        :medium
    :use          '[iterate mapv partial vector drop first ->>]
    :dont-use     '[for loop recur reduce]}
-  [coll nesting-factor])
+  [coll nesting-factor]
+  (mapv (partial wrap (dec nesting-factor)) coll))
 
 (defn split-comb
   "Given a collection, return a new sequence where the first
