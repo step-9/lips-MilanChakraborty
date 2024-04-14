@@ -222,7 +222,8 @@
   each element repeated twice"
   {:level        :easy
    :use          '[mapcat partial repeat :optionally vector]}
-  [coll])
+  [coll]
+  (mapcat vector coll coll))
 
 (defn third-or-fifth
   "Given a collection return a new collection that contains
