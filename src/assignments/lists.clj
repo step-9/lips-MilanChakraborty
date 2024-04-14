@@ -239,7 +239,8 @@
   [4 5 6] => [16 16 16]"
   {:level        :easy
    :use          '[map constantly let]}
-  [coll])
+  [[fst & _ :as coll]]
+  (map (constantly (* fst fst)) coll))
 
 (defn russian-dolls
   "Given a collection and a number, wrap each element in a nested vector
