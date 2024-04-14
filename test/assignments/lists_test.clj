@@ -94,7 +94,7 @@
   (testing "non-empty collection"
     (is (= [1 2 3] (union [1 2] [2 3])))))
 
-(deftest ^:kaocha/pending transpose-test
+(deftest ^:implemented transpose-test
   (testing "non-empty collection"
     (is (= [[:a :d] [:b :e] [:c :f]] (transpose [[:a :b :c] [:d :e :f]])))))
 
