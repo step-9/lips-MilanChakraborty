@@ -58,7 +58,7 @@
   (testing "element not-present in collection"
     (is (= -1 (index-of [1 2 3 4 5 6] 9)))))
 
-(deftest ^:kaocha/pending palindrome?-test
+(deftest ^:implemented palindrome?-test
   (testing "true condition"
     (is (true? (palindrome? ["n" "a" "m" "a" "n"]))))
   (testing "false condition"

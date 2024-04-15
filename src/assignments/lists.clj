@@ -188,7 +188,7 @@
   [coll1 coll2]
   (->> coll2
        (remove (set coll1)) 
-       (into coll1 )))
+       (into coll1)))
 
 ;; points-around-origin is a def not a defn
 (def
@@ -290,7 +290,13 @@
   {:level        :easy
    :use          '[empty? loop recur butlast rest]
    :dont-use     '[reverse]}
-  [coll])
+  [coll]
+  (loop [coll1 coll 
+         coll2 coll]
+    (cond
+      (empty? coll1) true
+      (not= (first coll1) (last coll2)) false
+      :else (recur (rest coll1) (butlast coll2)))))
 
 (defn index-of
   "index-of takes a sequence and an element and finds the index
