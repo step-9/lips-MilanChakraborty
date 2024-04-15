@@ -114,7 +114,7 @@
   (testing "[1 2 3] 3 => [[[1]] [[2]] [[3]]]"
     (is (= [[[1]] [[2]] [[3]]]  (russian-dolls [1 2 3] 3)))))
 
-(deftest ^:kaocha/pending muted-thirds-test
+(deftest ^:implemented muted-thirds-test
   (testing "[1 2 8 4 15 2 7] => [1 2 0 4 15 0 7]"
     (is (= [1 2 0 4 15 0 7] (muted-thirds [1 2 8 4 15 2 7])))))
 
