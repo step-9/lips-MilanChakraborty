@@ -329,11 +329,16 @@
     coll 
     (map max coll (rest coll))))
 
+(defn filter-by-index-helper 
+  [pred index value]
+  (when (pred index) value))
+
 (defn filter-by-index
   "Returns elements of coll at even indices"
   {:level :easy
    :use   '[keep-indexed]}
-  [pred coll])
+  [pred coll]
+  (keep-indexed (partial filter-by-index-helper pred) coll))
 
 (defn collatz-sequence
   "Returns the collatz sequence for n.

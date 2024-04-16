@@ -147,7 +147,7 @@
       [3 3] [3 3 3]
       [2 2 3] [1 2 1 3])))
 
-(deftest ^:kaocha/pending filter-by-index-test
+(deftest ^:implemented filter-by-index-test
   (testing "filter-by-index returns elements at odd indices"
     (are [result pred coll] (= result (filter-by-index pred coll))
       [] odd? []
