@@ -324,7 +324,10 @@
   {:level :easy
    :use   '[map max rest]
    :alternates '[repeat partition]}
-  [coll])
+  [coll]
+  (if (= (count coll) 1)
+    coll 
+    (map max coll (rest coll))))
 
 (defn filter-by-index
   "Returns elements of coll at even indices"

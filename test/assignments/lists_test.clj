@@ -132,7 +132,7 @@
       [4 5 6] (max-three-digit-sequence [1 2 4 5 6])
       [5 2 4] (max-three-digit-sequence [1 3 5 2 4 1]))))
 
-(deftest ^:kaocha/pending max-of-pairs-test
+(deftest ^:implemented max-of-pairs-test
   (testing "max of pairs with 0 elements"
     (is (= [] (max-of-pairs []))))
   (testing "max of pairs with 1 element"
