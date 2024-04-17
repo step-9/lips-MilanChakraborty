@@ -340,6 +340,19 @@
   [pred coll]
   (keep-indexed (partial filter-by-index-helper pred) coll))
 
+(defn collatz 
+  [n]
+  (if (even? n)
+    (/ n 2)
+    (+ (* 3 n) 1)))
+
+(defn take-until
+  [pred [fst & rst :as coll]]
+  (cond
+    (empty? coll) nil
+    (pred fst) [fst]
+    :else (lazy-seq (cons fst (take-until pred rst)))))
+
 (defn collatz-sequence
   "Returns the collatz sequence for n.
    The collatz function takes a number n and returns:
@@ -351,4 +364,5 @@
   {:level :easy
    :use   '[iterate take-while]
    :alternates '[(implement your own take-until)]}
-  [n])
+  [n]
+  (take-until (partial = 1) (iterate collatz n)))

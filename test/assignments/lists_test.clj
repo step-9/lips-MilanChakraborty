@@ -172,7 +172,7 @@
       [1 2 5] #{0 1 4 5} [1 2 3 4 5]
       [1 2 5 6] #{0 1 4 5} [1 2 3 4 5 6])))
 
-(deftest ^:kaocha/pending collatz-sequence-test
+(deftest ^:implemented collatz-sequence-test
   (testing "collatz sequences"
     (are [x y] (= (collatz-sequence x) y)
       1 [1]
