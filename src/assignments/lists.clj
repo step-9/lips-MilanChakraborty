@@ -101,14 +101,13 @@
   [coll]
   (every? (partial apply <=) (partition 2 1 coll)))
 
-(defn distinct-lazy 
-  [coll seen]
-  (if (empty? coll)
-    nil
-    (let [[fst & remaining] coll]
-      (if (seen fst)
-        (recur remaining seen)
-        (lazy-seq (cons fst (distinct-lazy remaining (conj seen fst))))))))
+(defn distinct-lazy
+  [[fst & rst :as coll] seen]
+  (lazy-seq 
+   (cond 
+     (empty? coll) nil 
+     (seen fst) (distinct-lazy rst seen)
+     :else (cons fst (distinct-lazy rst (conj seen fst))))))
 
 (defn distinct'
   "Implement your own lazy sequence version of distinct which returns
@@ -121,13 +120,12 @@
   (distinct-lazy coll #{}))
 
 (defn dedupe-lazy
-  [coll last-element]
-  (if (empty? coll)
-    nil
-    (let [[fst & remaining] coll]
-      (if (= last-element fst)
-        (recur remaining last-element)
-        (lazy-seq (cons fst (dedupe-lazy remaining fst)))))))
+  [[fst & rst :as coll] last-element]
+  (lazy-seq 
+   (cond 
+     (empty? coll) nil 
+     (= last-element fst) (dedupe-lazy rst last-element)
+     :else (cons fst (dedupe-lazy rst fst)))))
 
 (defn dedupe'
   "Implement your own lazy sequence version of dedupe which returns
@@ -252,7 +250,7 @@
 
 (defn wrap 
   [layers item]
-  (nth (iterate vector item) layers))
+  (first (drop layers (iterate vector item))))
 
 (defn russian-dolls
   "Given a collection and a number, wrap each element in a nested vector
@@ -291,12 +289,11 @@
    :use          '[empty? loop recur butlast rest]
    :dont-use     '[reverse]}
   [coll]
-  (loop [coll1 coll 
-         coll2 coll]
+  (loop [coll coll]
     (cond
-      (empty? coll1) true
-      (not= (first coll1) (last coll2)) false
-      :else (recur (rest coll1) (butlast coll2)))))
+      (empty? coll) true
+      (not= (first coll) (last coll)) false
+      :else (recur (rest (butlast coll))))))
 
 (defn index-of
   "index-of takes a sequence and an element and finds the index
@@ -308,7 +305,6 @@
   [coll n]
   (loop [i 0
          coll coll] 
-    (println i coll)
     (cond 
       (empty? coll) -1
       (= n (first coll)) i
@@ -348,10 +344,11 @@
 
 (defn take-until
   [pred [fst & rst :as coll]]
-  (cond
+  (lazy-seq 
+   (cond
     (empty? coll) nil
     (pred fst) [fst]
-    :else (lazy-seq (cons fst (take-until pred rst)))))
+    :else (cons fst (take-until pred rst)))))
 
 (defn collatz-sequence
   "Returns the collatz sequence for n.
