@@ -153,7 +153,12 @@
   {:level        :medium
    :use          '[map next nnext max-key partial apply + if ->>]
    :dont-use     '[loop recur partition]}
-  [coll])
+  [coll]
+  (if (>= 3 (count coll)) 
+    coll
+    (->> 
+     (mapv vector coll (next coll) (nnext coll))
+     (apply max-key (partial apply +)))))
 
 ;; transpose is a def. Not a defn.
 (def

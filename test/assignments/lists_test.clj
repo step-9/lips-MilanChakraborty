@@ -124,7 +124,7 @@
   (testing "even length collection"
     (is (= '(1 4 2 5 3 6) (split-comb [1 2 3 4 5 6])))))
 
-(deftest ^:kaocha/pending max-three-digit-sequence-test
+(deftest ^:implemented max-three-digit-sequence-test
   (testing "less than 3 elements"
     (is (= [1 2] (max-three-digit-sequence [1 2]))))
   (testing "three elements or more"
