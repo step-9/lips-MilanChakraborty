@@ -25,11 +25,10 @@
   [pred coll] 
   (loop [result []
          [first-element & remaining-elements] coll]
-    (if (nil? first-element)
-      result
-      (if (pred first-element)
-           (recur (conj result first-element) remaining-elements)
-           (recur result remaining-elements)))))
+    (cond 
+    (nil? first-element) result
+    (pred first-element) (recur (conj result first-element) remaining-elements)
+    :else (recur result remaining-elements))))
 
 (defn reduce'
   "Implement your own multi-arity version of reduce
