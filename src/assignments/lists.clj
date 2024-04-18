@@ -71,11 +71,11 @@
    :use          '[loop recur and]
    :dont-use     '[every?]}
   [pred coll]
-  (loop [remaining coll]
-    (if (empty? remaining)
+  (loop [coll coll]
+    (if (empty? coll)
       true
-      (and (pred (first remaining))
-           (recur (rest remaining))))))
+      (and (pred (first coll))
+           (recur (rest coll))))))
 
 (defn some?'
   "Implement your own version of some that checks if at least one
@@ -86,11 +86,11 @@
    :use          '[loop recur or]
    :dont-use     '[some]}
   [pred coll]
-  (loop [remaining coll]
-    (if (empty? remaining)
+  (loop [coll coll]
+    (if (empty? coll)
     false
-    (or (pred (first remaining))
-        (recur (rest remaining))))))
+    (or (pred (first coll))
+        (recur (rest coll))))))
 
 (defn ascending?
   "Verify if every element is greater than or equal to its predecessor"
