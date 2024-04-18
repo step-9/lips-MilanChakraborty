@@ -54,8 +54,6 @@
       cnt
       (recur (inc cnt) (rest remaining)))))
 
-(defn unshift [ctx elm] (conj ctx elm))
-
 (defn reverse'
   "Implement your own version of reverse that reverses a coll.
   Returns nil if coll provided is not a sequence"
@@ -63,7 +61,8 @@
    :use          '[reduce conj seqable? when]
    :dont-use     '[reverse]}
   [coll] 
-  (when (seqable? coll) (reduce unshift '() coll)))
+  (when (seqable? coll) 
+    (reduce #(conj %1 %2) '() coll)))
 
 (defn every?'
   "Implement your own version of every? that checks if every
