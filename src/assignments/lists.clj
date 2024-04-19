@@ -37,8 +37,12 @@
   {:level        :medium
    :use          '[loop recur]
    :dont-use     '[reduce]}
-  ([f coll])
-  ([f init coll]))
+  ([f [fst scnd :as coll]] (reduce' f (f fst scnd) (nnext coll)))
+  ([f init coll]
+   (loop [ctx init [fst & rst :as coll] coll]
+     (if (empty? coll)
+       ctx
+       (recur (f ctx fst) rst)))))
 
 (defn count'
   "Implement your own version of count that counts the
