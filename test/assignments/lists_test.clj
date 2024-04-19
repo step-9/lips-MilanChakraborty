@@ -118,7 +118,7 @@
   (testing "[1 2 8 4 15 2 7] => [1 2 0 4 15 0 7]"
     (is (= [1 2 0 4 15 0 7] (muted-thirds [1 2 8 4 15 2 7])))))
 
-(deftest ^:kaocha/pending split-comb-test
+(deftest ^:implemented split-comb-test
   (testing "odd length collection"
     (is (= '(1 3 2 4 5) (split-comb [1 2 3 4 5]))))
   (testing "even length collection"
